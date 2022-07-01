@@ -37,5 +37,10 @@ class PersistenceViewModel : ObservableObject {
        try? container.viewContext.save()
         fetchFruits()
     }
-    
+    func deleteFruit(index: IndexSet){
+        guard let index = index.first else { return  }
+        let fruit = fruits[index]
+        container.viewContext.delete(fruit)
+        saveFruit()
+    }
 }
